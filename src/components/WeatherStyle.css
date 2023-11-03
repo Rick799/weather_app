@@ -3,4 +3,11 @@
   width: 500px;
 }
 
+@media (max-width: 640px) {
+  .circle-size {
+    width: 450px;
+    height: 450px;
+  }
+}
+
 
