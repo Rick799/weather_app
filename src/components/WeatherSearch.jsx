@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const WeatherSearch = ({ handleWeatherData, unit}) => {
+const WeatherSearch = ({ handleWeatherData, unit }) => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -22,6 +22,7 @@ const WeatherSearch = ({ handleWeatherData, unit}) => {
       if (response.ok) {
         const result = await response.json();
         handleWeatherData(result);
+        getCitySuggestions(query);
       }
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -90,7 +91,7 @@ const WeatherSearch = ({ handleWeatherData, unit}) => {
         <ul className="cursor-pointer">
           {suggestions.map((suggestion) => (
             <li
-              key={`${suggestion.name}-${suggestion.country}`}
+              key={`${suggestion.name}'-'${suggestion.country}`}
               onClick={() => onSuggestionClick(suggestion)}
               className="hover:scale-105"
             >
